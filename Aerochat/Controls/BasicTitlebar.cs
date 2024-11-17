@@ -254,7 +254,7 @@ namespace Aerochat.Controls
 
             if (IsDwmEnabled)
             {
-                HideCustomTitlebar();
+                RefreshTitlebarState();
             }
             else
             {
