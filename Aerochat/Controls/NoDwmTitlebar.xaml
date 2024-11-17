@@ -7,19 +7,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              KeyboardNavigation.TabNavigation="None">
-    <Border Background="{Binding Color}" CornerRadius="8,8,0,0">
+    <Border CornerRadius="6,6,0,0" Background="#FF0035AD">
         <Grid>
-            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="243*"/>
+                <ColumnDefinition Width="557*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="8" />
                     <ColumnDefinition Width="16" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Button x:Name="SystemMenuButton" Grid.Column="1" Style="{StaticResource TransparentStyle}">
-                    <Image x:Name="SystemMenuImage" Source="{Binding Icon}" />
+                <Button x:Name="SystemMenuButton" Grid.Column="1" Style="{StaticResource TransparentStyle}" Width="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Image x:Name="SystemMenuImage" Width="0" Height="0" />
                 </Button>
-                <TextBlock Grid.Column="2" Foreground="{Binding TextColor}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Text="{Binding Title}">
+                <TextBlock Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-20,0,0,0" Text="{Binding Title}" FontFamily="Arial" FontSize="13" FontWeight="Bold" Foreground="White" TextAlignment="Center">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
@@ -30,8 +34,8 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
-                <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" Height="18" Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,8,0">
-                    <Button x:Name="Minimize" Click="Minimize_Click" Style="{StaticResource TransparentStyle}">
+                <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" Height="16" Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,5,0">
+                    <Button x:Name="Minimize" Click="Minimize_Click" Style="{StaticResource TransparentStyle}" Width="18">
                         <Image>
                             <Image.Style>
                                 <Style TargetType="Image">
@@ -51,7 +55,7 @@
                             </Image.Style>
                         </Image>
                     </Button>
-                    <Button x:Name="Maximize" Click="Maximize_Click" Style="{StaticResource TransparentStyle}">
+                    <Button x:Name="Maximize" Click="Maximize_Click" Style="{StaticResource TransparentStyle}" Width="18">
                         <Image>
                             <Image.Style>
                                 <Style TargetType="Image">
@@ -71,7 +75,7 @@
                             </Image.Style>
                         </Image>
                     </Button>
-                    <Button x:Name="Close" Click="Close_Click" Style="{StaticResource TransparentStyle}">
+                    <Button x:Name="Close" Click="Close_Click" Style="{StaticResource TransparentStyle}" Width="18">
                         <Image>
                             <Image.Style>
                                 <Style TargetType="Image">
@@ -93,7 +97,7 @@
                     </Button>
                 </StackPanel>
             </Grid>
-            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Fill="#77FFFFFF" Height="1" />
+            <Rectangle VerticalAlignment="Bottom" Fill="#77FFFFFF" Height="1" Grid.ColumnSpan="2" />
         </Grid>
     </Border>
 </UserControl>

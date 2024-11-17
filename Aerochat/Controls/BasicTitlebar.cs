@@ -27,11 +27,9 @@ namespace Aerochat.Controls
         Border FirstBorder;
         Border SecondBorder;
         Grid Container;
-        public bool IsDwmEnabled { get; private set; }
         public BaseTitlebar()
         {
             DwmIsCompositionEnabled(out bool isEnabled);
-            IsDwmEnabled = isEnabled;
         }
 
         public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(
@@ -120,21 +118,21 @@ namespace Aerochat.Controls
             parentBorder.Children.Add(grid);
 
             Border border = new();
-            border.BorderBrush = new SolidColorBrush(Color.FromRgb(68, 68, 68));
+            border.BorderBrush = new SolidColorBrush(Color.FromRgb(2, 41, 85));
             border.BorderThickness = new Thickness(1);
             parentBorder.Children.Add(border);
 
             Border whiteBorder = new();
             // set to white, opacity 32, thickness 1
-            whiteBorder.BorderBrush = new SolidColorBrush(Color.FromArgb(127, 255, 255, 255));
+            whiteBorder.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 0, 53, 173));
             whiteBorder.BorderThickness = new Thickness(1);
             // set it so its 1px offset in all directions (top left bottom right)
             whiteBorder.Margin = new Thickness(1);
             parentBorder.Children.Add(whiteBorder);
 
             // round both borders to 6px
-            border.CornerRadius = new CornerRadius(4, 4, 0, 0);
-            whiteBorder.CornerRadius = new CornerRadius(4, 4, 0, 0);
+            border.CornerRadius = new CornerRadius(6, 6, 0, 0);
+            whiteBorder.CornerRadius = new CornerRadius(6, 6, 0, 0);
 
             // round the content presenter
             contentPresenter.ClipToBounds = true;
@@ -193,10 +191,6 @@ namespace Aerochat.Controls
 
         private void RefreshTitlebarState()
         {
-            if (IsDwmEnabled)
-            {
-                return;
-            }
 
             if (Titlebar == null || Window == null) return;
 
@@ -215,13 +209,13 @@ namespace Aerochat.Controls
             {
                 Titlebar.Visibility = Visibility.Visible;
                 WindowChrome chrome = new WindowChrome();
-                chrome.CaptionHeight = 28;
+                chrome.CaptionHeight = 25;
                 chrome.CornerRadius = new CornerRadius(6, 6, 0, 0);
                 chrome.GlassFrameThickness = new Thickness(0);
                 WindowChrome.SetWindowChrome(Window, chrome);
-                FirstBorder.BorderThickness = new Thickness(1);
-                SecondBorder.BorderThickness = new Thickness(1);
-                Container.RowDefinitions[0].Height = new GridLength(28);
+                FirstBorder.BorderThickness = new Thickness(4);
+                SecondBorder.BorderThickness = new Thickness(3);
+                Container.RowDefinitions[0].Height = new GridLength(25);
             }
 
             // Restore our primary window procedure hook:
@@ -230,7 +224,7 @@ namespace Aerochat.Controls
 
         private void HideCustomTitlebar()
         {
-            Titlebar.Visibility = Visibility.Collapsed;
+            Titlebar.Visibility = Visibility.Visible;
             WindowChrome.SetWindowChrome(Window, null);
             FirstBorder.BorderThickness = new Thickness(0);
             SecondBorder.BorderThickness = new Thickness(0);
@@ -251,15 +245,7 @@ namespace Aerochat.Controls
         public void OnDwmChanged()
         {
             if (Titlebar == null || Window == null) return;
-
-            if (IsDwmEnabled)
-            {
                 RefreshTitlebarState();
-            }
-            else
-            {
-                RefreshTitlebarState();
-            }
         }
 
         private System.Windows.Point PointFromNcHit(IntPtr lParam)
@@ -369,17 +355,6 @@ namespace Aerochat.Controls
                     break;
                 }
 
-                case WM_DWMCOMPOSITIONCHANGED:
-                {
-                    DwmIsCompositionEnabled(out bool enabled);
-                    if (enabled != IsDwmEnabled)
-                    {
-                        IsDwmEnabled = enabled;
-                        OnDwmChanged();
-                    }
-                    OnDwmChanged();
-                    break;
-                }
                 case WM_SETTEXT:
                 {
                     string? newText = Marshal.PtrToStringAuto(wParam);

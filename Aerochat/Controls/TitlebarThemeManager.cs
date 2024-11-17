@@ -67,6 +67,7 @@ namespace Aerochat.Controls
             MinimizeHoverImagePath = new BitmapImage(new Uri("/Resources/Titlebar/XP/MinimizeHover.png", UriKind.Relative));
             MinimizeActiveImagePath = new BitmapImage(new Uri("/Resources/Titlebar/XP/MinimizeActive.png", UriKind.Relative));
             MinimizeInactiveImagePath = new BitmapImage(new Uri("/Resources/Titlebar/XP/MinimizeInactive.png", UriKind.Relative));
+            MinimizeFrameTopImagePath = new BitmapImage(new Uri("/Resources/Titlebar/WindowFrameTopUis2.png", UriKind.Relative));
         }
 
         private void LoadVistaTheme()
@@ -85,6 +86,7 @@ namespace Aerochat.Controls
             MinimizeHoverImagePath = new BitmapImage(new Uri("/Resources/Titlebar/Vista/MinimizeHover.png", UriKind.Relative));
             MinimizeActiveImagePath = new BitmapImage(new Uri("/Resources/Titlebar/Vista/MinimizeActive.png", UriKind.Relative));
             MinimizeInactiveImagePath = new BitmapImage(new Uri("/Resources/Titlebar/Vista/MinimizeInactive.png", UriKind.Relative));
+            MinimizeFrameTopImagePath = new BitmapImage(new Uri("/Resources/Titlebar/WindowFrameTopUis2.png", UriKind.Relative));
         }
 
         #region Property boilerplate
@@ -248,6 +250,7 @@ namespace Aerochat.Controls
             get => (BitmapImage)GetValue(MinimizeInactiveImagePathProperty);
             set => SetValue(MinimizeInactiveImagePathProperty, value);
         }
+        public BitmapImage MinimizeFrameTopImagePath { get; private set; }
 
         public static readonly DependencyProperty MinimizeInactiveImagePathProperty =
             DependencyProperty.Register(

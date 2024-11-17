@@ -41,5 +41,9 @@ namespace Aerochat.ViewModels
             get => _textColor;
             set => SetProperty(ref _textColor, value);
         }
+
+        private ImageSource minimizeFrameTopImagePath;
+
+        public ImageSource MinimizeFrameTopImagePath { get => minimizeFrameTopImagePath; set => SetProperty(ref minimizeFrameTopImagePath, value); }
     }
 }

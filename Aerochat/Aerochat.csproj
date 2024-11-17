@@ -272,6 +272,7 @@
 		<None Remove="Resources\Titlebar\XP\MinimizeActive.png" />
 		<None Remove="Resources\Titlebar\XP\MinimizeHover.png" />
 		<None Remove="Resources\Titlebar\XP\MinimizeInactive.png" />
+		<None Remove="Resources\Titlebar\WindowFrameTopUis2.png" />
 		<None Remove="Resources\top-blue-thing-transparent.png" />
 		<None Remove="Resources\top-blue-thing.png" />
 		<None Remove="Resources\Tray\Active.ico" />
@@ -479,6 +480,7 @@
 		<Resource Include="Resources\Titlebar\XP\MinimizeActive.png" />
 		<Resource Include="Resources\Titlebar\XP\MinimizeHover.png" />
 		<Resource Include="Resources\Titlebar\XP\MinimizeInactive.png" />
+		<Resource Include="Resources\Titlebar\WindowFrameTopUis2.png" />
 		<Resource Include="Resources\Tray\Active.ico" />
 		<Resource Include="Resources\Tray\Dnd.ico" />
 		<Resource Include="Resources\Tray\Idle.ico" />
@@ -598,5 +600,4 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
-
 </Project>

@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:Aerochat.Windows" xmlns:viewmodels="clr-namespace:Aerochat.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:LoginWindowViewModel}"
         xmlns:controls="clr-namespace:Aerochat.Controls"
         mc:Ignorable="d"
-        Title="Windows Live Messenger" Height="650" Width="400"
+        Title="Start" Height="325" Width="400"
         Style="{StaticResource Window}">
     <controls:BaseTitlebar Color="{Binding Scene.Color}" BlackText="{Binding Scene.TextColor}">
         <Grid>
-            <controls:ColorizedNineSlice Image="/Resources/Message/Background.png" TintColor="{Binding Scene.Color}" Slice="1,1" />
+            <controls:ColorizedNineSlice TintColor="{Binding Scene.Color}" Slice="1,1" Background="White" Margin="0,0,0,335" />
             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="128" Background="{Binding Scene.Color}">
                 <Image Source="{Binding Scene.File}" Stretch="Fill" />
                 <Rectangle>
                     <Rectangle.Fill>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                             <LinearGradientBrush.GradientStops>
-                                <GradientStop Offset="0" Color="Transparent" />
+                                <GradientStop Offset="0" Color="White" />
                                 <GradientStop Offset="1" Color="White" />
                             </LinearGradientBrush.GradientStops>
                         </LinearGradientBrush>
@@ -26,21 +26,13 @@
             </Grid>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" UseLayoutRounding="True" Margin="24,0">
-                    <Grid Width="139" Height="139" Margin="0,12,0,0">
-                        <Image Source="/Resources/Frames/PlaceholderPfp.png" Width="96" Height="96" Margin="4,0,0,6" />
-                        <Image Source="/Resources/Frames/XLFrameOffline.png" />
-                    </Grid>
-                    <TextBlock Margin="0,6,0,0" Text="Sign in" Foreground="#355a88" FontSize="19" HorizontalAlignment="Center" VerticalAlignment="Top" />
-                    <TextBlock Foreground="#333333" Margin="0,6,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap">
-                Sign in with your Windows Live ID. Don't have one? <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://discord.com/login">Sign up.</Hyperlink>
-                    </TextBlock>
+                <StackPanel Grid.Row="0" UseLayoutRounding="True" Margin="24,0,24,333">
+                    <TextBlock Margin="0,6,0,0" Foreground="#355a88" FontSize="19" HorizontalAlignment="Center" VerticalAlignment="Top" />
                     <Grid MaxWidth="238" Margin="0,20,0,0">
-                        <controls:NineSlice Image="/Resources/Login/Frame.png" Slice="4,4" />
-                        <StackPanel Margin="6">
+                        <controls:NineSlice Image="/Resources/Login/Frame.png" Slice="4,4" Margin="-80,-51,-82,29" Foreground="{x:Null}" />
+                        <StackPanel Margin="-40,-45,-41,57">
                             <Grid Margin="0,0,0,8">
                                 <PasswordBox PasswordChanged="Password_PasswordChanged" PasswordChar="*" Foreground="#333333" x:Name="Password" Height="24" />
                                 <TextBlock x:Name="PasswordPlaceholder" Foreground="#6d6d6d" FontStyle="Italic" Text="Enter your token" IsHitTestVisible="False" VerticalAlignment="Center" Margin="5,0,5,2" />
@@ -146,24 +138,13 @@
                                     <TextBlock Foreground="#333">Sign me in automatically</TextBlock>
                                 </CheckBox>
                             </StackPanel>
-                            <TextBlock>
-                            <Hyperlink>Forgot your password?</Hyperlink>
-                            </TextBlock>
+                            <Button
+                    x:Name="SignIn" MinWidth="72" IsEnabled="{Binding NotLoggingIn}" Content="Sign in" Click="SignIn_Click" Height="23" Width="83" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                            <TextBlock Margin="0,11,0,0"><Run Text="Forgot your password? Send the word &quot;user&quot; to 2000"/></TextBlock>
                         </StackPanel>
                     </Grid>
-                    <Button IsEnabled="{Binding NotLoggingIn}" x:Name="SignIn" Click="SignIn_Click" Content="Sign in" HorizontalAlignment="Center" MinWidth="72" Margin="0,10" Height="23" />
                 </StackPanel>
-                <Grid Grid.Row="1" Margin="12,12" Opacity="0.75">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock>
-                    <Hyperlink>Privacy statement</Hyperlink>
-                        </TextBlock>
-                        <TextBlock Margin="8,0" Foreground="#aaa">|</TextBlock>
-                        <TextBlock>
-                    <Hyperlink>Server status</Hyperlink>
-                        </TextBlock>
-                    </StackPanel>
-                </Grid>
+                <Grid Grid.Row="1" Margin="12,12" Opacity="0"/>
             </Grid>
         </Grid>
     </controls:BaseTitlebar>

@@ -206,7 +206,6 @@
                                 <ToolTip Content="Open your e-mail inbox" />
                             </Grid.ToolTip>
                             <controls:NineSliceButton Hover="/Resources/Message/ToolbarHover.png" Pressed="/Resources/Message/ToolbarActive.png" />
-                            <Image IsHitTestVisible="False" Source="/Resources/Home/Mail.png" />
                         </Grid>
                         <Border VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="80,12,48,0">
                             <Border>
@@ -226,8 +225,8 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="Auto" />
                                                 </Grid.ColumnDefinitions>
-                                                <Border Style="{StaticResource Shadow}">
-                                                    <Border Style="{StaticResource Shadow}">
+                                                <Border>
+                                                    <Border>
                                                         <Grid>
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="*" />
@@ -332,8 +331,8 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="Auto" />
                                                 </Grid.ColumnDefinitions>
-                                                <Border Grid.Column="0" Style="{StaticResource Shadow}">
-                                                    <Border Style="{StaticResource Shadow}">
+                                                <Border Grid.Column="0">
+                                                    <Border>
                                                         <TextBlock MaxHeight="36" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Share a quick message" Margin="6,2,6,4" Panel.ZIndex="5">
                                                             <TextBlock.Style>
                                                                 <Style TargetType="TextBlock">
@@ -366,7 +365,7 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="0,-10,0,0">
+                    <Grid Grid.Row="0" Height="0" Width="0" Opacity="0" Visibility="Hidden">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto" />
@@ -742,18 +741,8 @@
                         </Grid>
                     </ScrollViewer>
                     <Grid Grid.Row="3" Margin="-16,0">
-                        <controls:ColorizedNineSlice TintColor="{Binding Theme.Scene.Color}" Slice="1,1">
-                            <controls:ColorizedNineSlice.Background>
-                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                    <GradientStop Color="#fff" Offset="0"/>
-                                    <GradientStop Color="#ddd" Offset="1"/>
-                                </LinearGradientBrush>
-                            </controls:ColorizedNineSlice.Background>
-
-                        </controls:ColorizedNineSlice>
                         <StackPanel Margin="16,0" VerticalAlignment="Bottom">
-                            <controls:ColorizedNineSlice TintColor="{Binding Theme.Scene.Color}" Darken="0.5" Slice="1,1" VerticalAlignment="Top" Image="/Resources/Home/BottomSeperator.png" Height="6" />
-                            <Grid Height="90">
+                            <Grid Height="0" Width="0" Visibility="Hidden">
                                 <StackPanel Margin="16,8,16,0">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="What's new" Foreground="#355a88" FontSize="15" Margin="0,0,16,0" />
@@ -814,7 +803,6 @@
                                     <controls:BBCode Text="{Binding CurrentNews.Body}" x:Name="NewsText" Margin="0,4,0,0" MaxHeight="48" TextWrapping="Wrap" TextTrimming="WordEllipsis" Foreground="#333" />
                                 </StackPanel>
                             </Grid>
-                            <controls:ColorizedNineSlice TintColor="{Binding Theme.Scene.Color}" Darken="0.5" Slice="1,1" VerticalAlignment="Top" Image="/Resources/Home/BottomSeperator.png" Height="6" />
                             <Grid Margin="16,4,16,16">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*" />
